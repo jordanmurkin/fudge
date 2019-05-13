@@ -1,0 +1,28 @@
+{
+  "name": "fudge",
+  "version": "0.0.1",
+  "description": "A simple Solidity contract deployer",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "fudge": "./bin/fudge.js"
+  },
+  "preferGlobal": true,
+  "keywords": [
+    "ethereum",
+    "solidity",
+    "web3"
+  ],
+  "author": "Jordan Murkin",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^2.20.0",
+    "dotenv": "^8.0.0",
+    "fs-extra": "^8.0.0",
+    "json-beautify": "^1.1.0",
+    "solc": "^0.5.8",
+    "web3": "^1.0.0-beta.33"
+  }
+}
