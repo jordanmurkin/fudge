@@ -31,7 +31,7 @@ By default it will look as below:
 ```
 CONTRACT_DIRECTORY=./contracts
 MIGRATION_DIRECTORY=./migrations
-BUILD_DIRECTORY=./build
+BUILD_DIRECTORY=./build/contracts
 
 ETHEREUM_HOST=http://localhost:8545
 ETHEREUM_ACCOUNT=0x0
