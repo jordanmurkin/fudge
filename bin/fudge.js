@@ -80,7 +80,6 @@ program
     .then(migrations => {
       console.log("");
       console.log("-- SUCCESSFULLY DEPLOYED --");
-      console.log(migrations);
       console.log("");
     })
     .catch(error => {
