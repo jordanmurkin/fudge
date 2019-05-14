@@ -59,6 +59,8 @@ The `compiledContract` here is the json file created during compilation. Each co
 
 The `args` are the constructor parameters of our contract. In this case we don't have any constructor, so this can be left blank.
 
+The order of migrations is often important to ensure that deployment is successful. To specify the order of the migrations you should place your migrations in individual files with a numerical prefix. For example `1_example_migration.js` will run before `2_example_migration.js`.
+
 ### Usage
 ```
 $ fudge compile
@@ -89,3 +91,59 @@ Commands:
   deploy|d       Deploy contracts to the network
 
 ```
+
+## More complex examples
+
+### Deployed contract address as constructor
+Often contracts are dependent on another contract as thus the deployed address of one must be supplied as a constructor to another. This example will cover how to use Fudge to achieve this.
+
+Consider the below contracts.
+```javascript
+// ./contracts/Contract.sol
+
+pragma solidity ^0.5.0;
+
+contract Dog {
+  string public name;
+  
+  constructor(string memory _name) public {
+    name = _name;
+  }
+}
+
+contract HumanWithDog {
+    Dog public dog;
+    
+    constructor(Dog _dog) public {
+        dog = _dog;
+    }
+}
+```
+
+To deploy these we will need to set up two migrations. One to deploy our Dog contract and another to deploy our HumanWithDog contract.
+
+```javascript
+// ./migrations/1_dog_migration.js
+
+const Dog = require('../build/contracts/Dog.json');
+
+module.exports = deployer => {
+  return deployer.deploy(Dog, ["spot"]);
+}
+```
+
+```javascript
+// ./migrations/2_humanwithdog_migration.js 
+
+const HumanWithDog = require('../build/contracts/HumanWithDog.json');
+const Dog = require('../build/contracts/Dog.json');
+
+module.exports = deployer => {
+  return deployer.deploy(HumanWithDog, [Dog.deployment.address]);
+}
+```
+
+The important points to note here are that:
+1. As the migrations need to be executed in order. Our Dog migration is prefixed with `1_` and our HumanWithDog contract is prefixed with `2_`.
+2. Arguments for migrations are always arrays
+3. The deployed contract address is stored inside the build files inside the `deployment` section, thus can be accessed at `deployment.address`
