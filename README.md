@@ -40,6 +40,25 @@ ETHEREUM_ACCOUNT_PRIVATE_KEY=0x0
 
 At minimum you will need to configure your `ETHEREUM_HOST`, `ETHEREUM_ACCOUNT` and `ETHEREUM_ACCOUNT_PRIVATE_KEY` for Fudge to function.
 
+### Write your migrations
+Migrations tell Fudge which contracts should be deployed to the network and how. **Contracts will not be deployed unless a migration exists instructing Fudge to do so**
+
+A basic migrations is included in `fudge init` that deploys the `Example.sol` contract:
+
+```javascript
+const Example = require('../build/contracts/Example.json');
+
+module.exports = deployer => {
+  return deployer.deploy(Example);
+}
+```
+
+Migrations are simply a function that takes in a `deployer` as a parameter. The `deployer` has one important method: `deploy(compiledContract, args)`.
+
+The `compiledContract` here is the json file created during compilation. Each contract (*note: not each file*) will be given it's own json file in the `BUILD_DIRECTORY` with its contract name. For our Example contract, this file will be `Example.json`.
+
+The `args` are the constructor parameters of our contract. In this case we don't have any constructor, so this can be left blank.
+
 ### Usage
 ```
 $ fudge compile
