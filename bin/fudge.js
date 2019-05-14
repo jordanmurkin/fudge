@@ -83,7 +83,15 @@ program
       console.log("");
     })
     .catch(error => {
-      console.log(error);
+      console.log("");
+      console.log("-- DEPLOY FAILED --");
+      console.log("-- Please ensure that contracts have been compiled --");
+      console.log("");
+      console.log(`-- Error: ${error.message} --`);
+      console.log("");
+      console.log("-- Stack trace -- ");
+      console.log(error.stack);
+      console.log("");
     });
   })
   .on('--help', () => {
