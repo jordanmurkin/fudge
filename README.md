@@ -24,6 +24,35 @@ This creates the default directory structure used by Fudge:
 
 ```
 
+### Setup environment
+Fudge uses a straight forward .env file managed using the https://www.npmjs.com/package/dotenv package for all configuration.
+
+By default it will look as below:
+```
+CONTRACT_DIRECTORY=./contracts
+MIGRATION_DIRECTORY=./migrations
+BUILD_DIRECTORY=./build
+
+ETHEREUM_HOST=http://localhost:8545
+ETHEREUM_ACCOUNT=0x0
+ETHEREUM_ACCOUNT_PRIVATE_KEY=0x0
+```
+
+At minimum you will need to configure your `ETHEREUM_HOST`, `ETHEREUM_ACCOUNT` and `ETHEREUM_ACCOUNT_PRIVATE_KEY` for Fudge to function.
+
+### Usage
+```
+$ fudge compile
+```
+
+You must first compile your contracts. This command will take all .sol files in the `CONTRACTS_DIRECTORY`, compile them and place the compiled contracts into the `BUILD_DIRECTORY`.
+
+```
+$ fudge deploy
+```
+
+With your contracts compiled, you can then use the deploy command to publis them to your configured `ETHEREUM_HOST`, signed with your `ETHEREUM_ACCOUNT` and `ETHEREUM_ACCOUNT_PRIVATE_KEY`.
+
 ## CLI
 ```
 $ fudge --help
