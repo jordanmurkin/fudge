@@ -3,7 +3,7 @@ A simple Solidity contract deployer that just works
 
 ## Installation
 ```bash
-$ npm install fudge -g
+$ npm install fudge-cli -g
 ```
 
 ## Guide

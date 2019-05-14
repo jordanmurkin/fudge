@@ -1,5 +1,5 @@
 {
-  "name": "fudge",
+  "name": "fudge-cli",
   "version": "0.0.1",
   "description": "A simple Solidity contract deployer",
   "main": "./lib/index.js",
@@ -17,6 +17,10 @@
   ],
   "author": "Jordan Murkin",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jordanmurkin/fudge.git"
+  },
   "dependencies": {
     "commander": "^2.20.0",
     "dotenv": "^8.0.0",
