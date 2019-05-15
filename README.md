@@ -43,7 +43,7 @@ At minimum you will need to configure your `ETHEREUM_HOST`, `ETHEREUM_ACCOUNT` a
 ### Write your migrations
 Migrations tell Fudge which contracts should be deployed to the network and how. **Contracts will not be deployed unless a migration exists instructing Fudge to do so**
 
-A basic migrations is included in `fudge init` that deploys the `Example.sol` contract:
+A basic migration is included in `fudge init` that deploys the `Example.sol` contract:
 
 ```javascript
 const Example = require('../build/contracts/Example.json');
@@ -72,7 +72,7 @@ You must first compile your contracts. This command will take all .sol files in 
 $ fudge deploy
 ```
 
-With your contracts compiled, you can then use the deploy command to publis them to your configured `ETHEREUM_HOST`, signed with your `ETHEREUM_ACCOUNT` and `ETHEREUM_ACCOUNT_PRIVATE_KEY`.
+With your contracts compiled, you can then use the deploy command to publish them to your configured `ETHEREUM_HOST`, signed with your `ETHEREUM_ACCOUNT` and `ETHEREUM_ACCOUNT_PRIVATE_KEY`.
 
 ## CLI
 ```
@@ -112,11 +112,11 @@ contract Dog {
 }
 
 contract HumanWithDog {
-    Dog public dog;
-    
-    constructor(Dog _dog) public {
-        dog = _dog;
-    }
+  Dog public dog;
+  
+  constructor(Dog _dog) public {
+      dog = _dog;
+  }
 }
 ```
 
