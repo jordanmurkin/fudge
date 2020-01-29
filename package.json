@@ -1,6 +1,6 @@
 {
   "name": "fudge-cli",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A simple Solidity contract deployer",
   "main": "./lib/index.js",
   "scripts": {
@@ -26,7 +26,8 @@
     "dotenv": "^8.0.0",
     "fs-extra": "^8.0.0",
     "json-beautify": "^1.1.0",
-    "solc": "0.5.4",
-    "web3": "1.0.0-beta.33"
+    "promptly": "^3.0.3",
+    "solc": "0.6.2",
+    "web3": "1.2.5"
   }
 }
