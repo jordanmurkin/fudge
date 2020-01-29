@@ -36,7 +36,8 @@ program
     })
     .catch(error => {
       console.log("");
-      console.log("An error has occured during the initialisation");
+      console.log("-- INIT FAILED --");
+      console.log("-- An error has occured during the initialisation --");
       console.log("");
       if (Array.isArray(error)) {
         error.forEach(e => {
