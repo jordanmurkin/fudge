@@ -108,10 +108,16 @@ program
       console.log("-- DEPLOY FAILED --");
       console.log("-- Please ensure that contracts have been compiled --");
       console.log("");
-      console.log(`-- Error: ${error.message} --`);
-      console.log("");
-      console.log("-- Stack trace -- ");
-      console.log(error.stack);
+      if (Array.isArray(error)) {
+        error.forEach((e, i) => {
+          console.log(`-- Error(${i}): ${e.message} --`);
+        })
+      } else {
+        console.log(`-- Error: ${error.message} --`);
+        console.log("");
+        console.log("-- Stack trace -- ");
+        console.log(error.stack);
+      }
       console.log("");
     });
   })
