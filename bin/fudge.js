@@ -35,7 +35,17 @@ program
       console.log("");
     })
     .catch(error => {
-      console.log(error);
+      console.log("");
+      console.log("An error has occured during the initialisation");
+      console.log("");
+      if (Array.isArray(error)) {
+        error.forEach(e => {
+          console.log(`-- ${e.message} --`);
+        })
+      } else {
+        console.log(`-- ${error} --`);
+      }
+      console.log("");
     });
   })
   .on('--help', () => {
@@ -59,7 +69,18 @@ program
       console.log("");
     })
     .catch(error => {
-      console.log(error);
+      console.log("");
+      console.log("-- COMPILE FAILED --");
+      console.log("-- An error has occured during the compilation --");
+      console.log("");
+      if (Array.isArray(error)) {
+        error.forEach((e, i) => {
+          console.log(`-- Error(${i}): ${e.message} --`);
+        })
+      } else {
+        console.log(`-- Error: ${error.message} --`);
+      }
+      console.log("");
     });
   })
   .on('--help', () => {
